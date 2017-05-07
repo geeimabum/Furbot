@@ -1,0 +1,5 @@
+put:
+
+sudo /home/pi/FTP/launch.sh
+
+into /etc/rc.local
