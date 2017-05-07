@@ -7,6 +7,7 @@ import json
 ##--------------Chariot Class---------------
 class Chariot:
     def __init__(self, port='/dev/ttyUSB0'):
+        print('Start Roomba initialization')
         self.connect(port)
         self.helper = helper.Helper()
 
@@ -17,13 +18,12 @@ class Chariot:
             self.ser = serial.Serial(
             port=port,
             baudrate=115200,
-            #parity=serial.PARITY_ODD,
             stopbits=serial.STOPBITS_ONE,
             bytesize=serial.EIGHTBITS,
             timeout=1
             )
         except (serial.SerialException, serial.SerialTimeoutException):
-            print('The chariot is not listening!')
+            print('Roomba failed to connect!')
 
 ## Send command over serial connection
     def sendCommand(self, command):
@@ -192,7 +192,7 @@ class Chariot:
         return response
 
 ## Query List
-
+## (name, id, size, encoding)   
 
    
 
